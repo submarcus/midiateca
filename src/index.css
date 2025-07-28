@@ -1,0 +1,6 @@
+@import url("https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,800,300,500,600,200,100,700&display=swap");
+@import "tailwindcss";
+
+* {
+    font-family: "Cabinet Grotesk", Arial, Helvetica, sans-serif;
+}
