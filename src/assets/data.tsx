@@ -366,7 +366,7 @@ export const data = [
         genero: ["Seinen", "Ficção Científica"],
         tempo: "Completo",
         tipo: "Mangá",
-        cover: "https://cdn.myanimelist.net/images/manga/1/318.jpg",
+        cover: "https://cdn.myanimelist.net/images/manga/1/128447.jpg",
     },
     {
         nota: 10,
@@ -790,15 +790,6 @@ export const data = [
         tempo: "Completo",
         tipo: "Filme",
         cover: "https://m.media-amazon.com/images/M/MV5BZmFlMTMyMzQtNmI4NC00YTcyLTgwOGUtMzc4YjcyNDUyOGY3XkEyXkFqcGc@._V1_QL75_UX190_CR0,0,190,281_.jpg",
-    },
-    {
-        nota: 10,
-        nome: "Midsommar",
-        lancamento: "2019",
-        genero: ["Drama", "Terror"],
-        tempo: "Completo",
-        tipo: "Filme",
-        cover: "https://m.media-amazon.com/images/M/MV5BMzQxNzQzOTQwM15BMl5BanBnXkFtZTgwMDQ2NTcwODM@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     },
     {
         nota: 10,
