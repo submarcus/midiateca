@@ -28,7 +28,7 @@ const Home = ({ data }: HomeProps) => {
         genero: "",
         nota: "",
         tipo: "",
-        sortBy: "nome",
+        sortBy: "nota",
     });
 
     const parseDate = (yearString: string): Date => {
