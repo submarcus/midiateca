@@ -1,6 +1,15 @@
 export const data = [
     {
         nota: 10,
+        nome: "Memories of Murder",
+        lancamento: "2003",
+        genero: ["Suspense", "Mistério"],
+        tempo: "Completo",
+        tipo: "Filme",
+        cover: "https://m.media-amazon.com/images/M/MV5BYmRjOWE5NmMtYTdkYS00ODFlLWJiMTMtYzE2NDZlZjlkZDQ0XkEyXkFqcGc@._V1_QL75_UX285_CR0,0,285,422_.jpg",
+    },
+    {
+        nota: 10,
         nome: "Berserk",
         lancamento: "1989",
         genero: ["Seinen", "Fantasia"],
