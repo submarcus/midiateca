@@ -18,24 +18,20 @@ const ContentCard = (content: Content) => {
         return "text-red-400";
     };
 
-    const getTypeColor = () => {
-        return "bg-black/90 border border-gray-500/50 shadow-lg";
-    };
-
-    const getTextColor = (type: string) => {
+    const getTypeBadgeStyle = (type: string) => {
         switch (type.toLowerCase()) {
-            // case "filme":
-            //     return "text-orange-400";
-            // case "anime":
-            //     return "text-pink-400";
-            // case "série":
-            //     return "text-teal-400";
-            // case "mangá":
-            //     return "text-blue-400";
-            // case "manwha":
-            //     return "text-purple-400";
+            case "filme":
+                return "bg-amber-950 text-amber-200 border border-amber-900";
+            case "anime":
+                return "bg-rose-950 text-rose-200 border border-rose-900";
+            case "série":
+                return "bg-emerald-950 text-emerald-200 border border-emerald-900";
+            case "mangá":
+                return "bg-blue-950 text-blue-200 border border-blue-900";
+            case "manwha":
+                return "bg-violet-950 text-violet-200 border border-violet-900";
             default:
-                return "text-gray-300";
+                return "bg-gray-950 text-gray-200 border border-gray-900";
         }
     };
 
@@ -63,7 +59,7 @@ const ContentCard = (content: Content) => {
 
                 {/* Tipo do conteúdo */}
                 <span
-                    className={`absolute top-2 left-2 rounded-md px-2.5 py-1 text-xs font-medium backdrop-blur-sm ${getTypeColor()} ${getTextColor(
+                    className={`absolute top-2 left-2 rounded-md px-2.5 py-1 text-xs font-medium ${getTypeBadgeStyle(
                         content.tipo
                     )}`}
                 >

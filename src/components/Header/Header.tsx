@@ -26,7 +26,7 @@ const Header = ({ data }: HeaderProps) => {
                         <div className="text-white font-bold text-lg">{totalContent}</div>
                         <div className="text-neutral-400 text-sm">Total</div>
                     </div>
-                    <a href="https://steamcommunity.com/id/maahlune" target="_blank">
+                    <a href="https://coelhomarcus.com" target="_blank">
                         <img
                             src="https://i.pinimg.com/1200x/5e/d0/b9/5ed0b982860e9fffd3ee73299d9b9165.jpg"
                             className="border border-neutral-800 bg-neutral-950 shadow-inner shadow-neutral-800 rounded-lg size-20 object-cover"
