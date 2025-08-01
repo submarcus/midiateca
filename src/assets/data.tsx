@@ -598,7 +598,7 @@ export const data = [
         nome: "Weak Hero",
         lancamento: "2018",
         genero: ["Drama", "Arte Marcial"],
-        tempo: "Incompleto",
+        tempo: "Completo",
         tipo: "Manwha",
         cover: "https://cdn.myanimelist.net/images/manga/3/232795.jpg",
     },
