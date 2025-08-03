@@ -19,6 +19,7 @@ interface FilterState {
     genero: string;
     nota: string;
     tipo: string;
+    tempo: string;
     sortBy: string;
 }
 
@@ -28,6 +29,7 @@ const Home = ({ data }: HomeProps) => {
         genero: "",
         nota: "",
         tipo: "",
+        tempo: "",
         sortBy: "nota",
     });
 
@@ -50,6 +52,11 @@ const Home = ({ data }: HomeProps) => {
         return Array.from(types).sort();
     }, [data]);
 
+    const uniqueTempos = useMemo(() => {
+        const tempos = new Set(data.map((d) => d.tempo));
+        return Array.from(tempos).sort();
+    }, [data]);
+
     const uniqueRatings = useMemo(() => {
         const ratings = new Set(data.map((d) => d.nota));
         return Array.from(ratings).sort((a, b) => b - a);
@@ -61,8 +68,9 @@ const Home = ({ data }: HomeProps) => {
             const matchesGenre = !filters.genero || d.genero.includes(filters.genero);
             const matchesRating = !filters.nota || d.nota.toString() === filters.nota;
             const matchesType = !filters.tipo || d.tipo === filters.tipo;
+            const matchesTempo = !filters.tempo || d.tempo === filters.tempo;
 
-            return matchesGenre && matchesRating && matchesType;
+            return matchesGenre && matchesRating && matchesType && matchesTempo;
         });
 
         // Sort content
@@ -94,6 +102,7 @@ const Home = ({ data }: HomeProps) => {
             genero: "",
             nota: "",
             tipo: "",
+            tempo: "",
             sortBy: "nota",
         });
     };
@@ -199,6 +208,23 @@ const Home = ({ data }: HomeProps) => {
                                 {uniqueTypes.map((type) => (
                                     <option key={type} value={type}>
                                         {type}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        {/* Time Filter */}
+                        <div>
+                            <label className="block text-sm font-medium text-neutral-300 mb-2">Status</label>
+                            <select
+                                value={filters.tempo}
+                                onChange={(e) => handleFilterChange("tempo", e.target.value)}
+                                className="w-full rounded-lg border border-neutral-800 bg-neutral-900 px-3 py-2 text-white focus:border-blue-500 focus:outline-none transition-colors"
+                            >
+                                <option value="">Todos os status</option>
+                                {uniqueTempos.map((tempo) => (
+                                    <option key={tempo} value={tempo}>
+                                        {tempo}
                                     </option>
                                 ))}
                             </select>
