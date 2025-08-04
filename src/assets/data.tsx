@@ -424,6 +424,15 @@ export const data = [
     },
     {
         nota: 9,
+        nome: "Usogui",
+        lancamento: "2006",
+        genero: ["Drama", "Ação", "Aposta"],
+        tempo: "Incompleto",
+        tipo: "Mangá",
+        cover: "https://cdn.myanimelist.net/images/manga/2/283743.jpg",
+    },
+    {
+        nota: 9,
         nome: "Shuumatsu no Valkyrie",
         lancamento: "2017",
         genero: ["Drama", "Ação", "Luta"],
@@ -982,6 +991,15 @@ export const data = [
     },
     {
         nota: 8,
+        nome: "Saotome Senshu, Hitakakusu",
+        lancamento: "2016",
+        genero: ["Esporte", "Romance"],
+        tempo: "Completo",
+        tipo: "Mangá",
+        cover: "https://cdn.myanimelist.net/images/manga/1/189746.jpg",
+    },
+    {
+        nota: 8,
         nome: "Shotgun Boy",
         lancamento: "2021",
         genero: ["Terror", "Sobrenatural"],
@@ -1006,6 +1024,15 @@ export const data = [
         tempo: "Completo",
         tipo: "Anime",
         cover: "https://cdn.myanimelist.net/images/anime/1614/90408.jpg",
+    },
+    {
+        nota: 8,
+        nome: "Sundome",
+        lancamento: "2006",
+        genero: ["Drama", "Romance", "Ecchi"],
+        tempo: "Completo",
+        tipo: "Mangá",
+        cover: "https://cdn.myanimelist.net/images/manga/2/267735.jpg",
     },
     {
         nota: 7,
