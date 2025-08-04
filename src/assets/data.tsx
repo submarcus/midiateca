@@ -802,6 +802,15 @@ export const data = [
     },
     {
         nota: 8,
+        nome: "Manhole",
+        lancamento: "2004",
+        genero: ["Terror", "Drama"],
+        tempo: "Completo",
+        tipo: "Mangá",
+        cover: "https://cdn.myanimelist.net/images/manga/2/67629.jpg",
+    },
+    {
+        nota: 8,
         nome: "Whiplash",
         lancamento: "2014",
         genero: ["Drama"],
