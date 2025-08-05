@@ -757,6 +757,15 @@ export const data = [
     },
     {
         nota: 8,
+        nome: "Meus 84m²",
+        lancamento: "2025",
+        genero: ["Drama", "Suspense"],
+        tempo: "Completo",
+        tipo: "Filme",
+        cover: "https://m.media-amazon.com/images/M/MV5BM2Y1MjcwMWMtN2IyZi00MGIwLWFiM2YtZjkzZWE1NmJlMGFhXkEyXkFqcGc@._V1_QL75_UY562_CR35,0,380,562_.jpg",
+    },
+    {
+        nota: 8,
         nome: "Classroom of the Elite",
         lancamento: "2017",
         genero: ["Drama", "Arte Marcial"],
