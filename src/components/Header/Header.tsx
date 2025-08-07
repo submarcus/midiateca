@@ -28,7 +28,7 @@ const Header = ({ data }: HeaderProps) => {
                     </div>
                     <a href="https://coelhomarcus.com" target="_blank">
                         <img
-                            src="https://i.pinimg.com/1200x/5e/d0/b9/5ed0b982860e9fffd3ee73299d9b9165.jpg"
+                            src="https://i.pinimg.com/736x/26/ea/51/26ea51a3944b58f7c64d8565bd99ad44.jpg"
                             className="border border-neutral-800 bg-neutral-950 shadow-inner shadow-neutral-800 rounded-lg size-20 object-cover"
                         />
                     </a>

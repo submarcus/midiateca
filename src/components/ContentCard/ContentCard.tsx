@@ -46,7 +46,7 @@ const ContentCard = (content: Content) => {
         >
             <div className={`relative ${content.review ? "*:!cursor-pointer" : "cursor-default"}`}>
                 <img
-                    className="w-full aspect-[258/352] object-cover rounded-lg transition-colors"
+                    className="w-full aspect-[300/450] object-cover rounded-lg transition-colors"
                     src={content.cover}
                     alt={content.nome}
                 />
