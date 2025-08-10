@@ -73,6 +73,15 @@ export const data = [
     },
     {
         nota: 10,
+        nome: "Fire Punch",
+        lancamento: "2016",
+        genero: ["Seinen", "Narrativa", "Psicológico"],
+        tempo: "Completo",
+        tipo: "Mangá",
+        cover: "https://cdn.myanimelist.net/images/manga/2/180430.jpg",
+    },
+    {
+        nota: 10,
         nome: "Kokou no Hito",
         lancamento: "2007",
         genero: ["Seinen", "Narrativa", "Psicológico"],
@@ -127,7 +136,7 @@ export const data = [
     },
     {
         nota: 10,
-        nome: "Koroshiya 1",
+        nome: "Ichi the Killer",
         lancamento: "1998",
         genero: ["Seinen", "Terror"],
         tempo: "Completo",
@@ -352,7 +361,7 @@ export const data = [
     },
     {
         nota: 9,
-        nome: "JoJo no Kimyou na Bouken Part 7: Steel Ball Run",
+        nome: "Jojo Part 7: Steel Ball Run",
         lancamento: "2004",
         genero: ["Seinen", "Ação"],
         tempo: "Completo",
@@ -361,7 +370,7 @@ export const data = [
     },
     {
         nota: 9,
-        nome: "JoJo no Kimyou na Bouken Part 6: Stone Ocean",
+        nome: "Jojo Part 6: Stone Ocean",
         lancamento: "1999",
         genero: ["Seinen", "Ação"],
         tempo: "Completo",

@@ -238,7 +238,7 @@ const Home = ({ data }: HomeProps) => {
                                 onChange={(e) => handleFilterChange("sortBy", e.target.value)}
                                 className="w-full rounded-lg border border-neutral-800 bg-neutral-900 px-3 py-2 text-white focus:border-blue-500 focus:outline-none transition-colors"
                             >
-                                <option value="lancamento">Ano (mais recente)</option>
+                                <option value="lancamento">Ordem de Lançamento</option>
                                 <option value="nome">Nome (A-Z)</option>
                                 <option value="nota">Nota (maior-menor)</option>
                             </select>
