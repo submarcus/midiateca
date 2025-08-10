@@ -1117,6 +1117,15 @@ export const data = [
     },
     {
         nota: 7,
+        nome: "Leave the World Behind",
+        lancamento: "2023",
+        genero: ["Apocalipse", "Thriller"],
+        tempo: "Completo",
+        tipo: "Filme",
+        cover: "https://media.themoviedb.org/t/p/w300_and_h450_bestv2/29rhl1xopxA7JlGVVsf1UHfYPvN.jpg",
+    },
+    {
+        nota: 7,
         nome: "The Truman Show",
         lancamento: "1998",
         genero: ["Narrativa", "Comédia"],
