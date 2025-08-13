@@ -255,7 +255,7 @@ const Home = ({ data }: HomeProps) => {
 
             <div className="text-neutral-200 text-xl text-center mb-6 hover:text-neutral-400 transition-colors">
                 <a href="https://coelhomarcus.com" target="_blank" rel="noopener noreferrer">
-                    Marcus
+                    {filters.tipo ? `${filters.tipo}s` : "Marcus"}
                 </a>
             </div>
 

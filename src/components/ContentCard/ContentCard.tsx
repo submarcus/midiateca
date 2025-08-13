@@ -53,7 +53,9 @@ const ContentCard = (content: Content) => {
 
                 {/* Sobreposição */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center rounded-lg bg-black/70 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <span className="text-xs text-neutral-300">lançou em</span>
                     <span className="text-md font-medium">{content.lancamento}</span>
+                    <br />
                     <span className="text-sm text-neutral-300">{content.tempo}</span>
                 </div>
 
