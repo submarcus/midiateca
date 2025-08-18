@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import ContentCard from "../ContentCard/ContentCard";
 
 interface Data {
@@ -25,6 +25,8 @@ interface FilterState {
 
 const Home = ({ data }: HomeProps) => {
     const [isFilterOpen, setIsFilterOpen] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage] = useState(24); // 24 items per page for nice grid layout
     const [filters, setFilters] = useState<FilterState>({
         genero: "",
         nota: "",
@@ -90,11 +92,24 @@ const Home = ({ data }: HomeProps) => {
         return filtered;
     }, [data, filters]);
 
+    // Pagination calculations
+    const totalItems = filteredAndSortedContent.length;
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const currentPageData = filteredAndSortedContent.slice(startIndex, endIndex);
+
+    // Scroll to top when page changes
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }, [currentPage]);
+
     const handleFilterChange = (key: keyof FilterState, value: string) => {
         setFilters((prev) => ({
             ...prev,
             [key]: value,
         }));
+        setCurrentPage(1); // Reset to first page when filters change
     };
 
     const clearFilters = () => {
@@ -105,6 +120,7 @@ const Home = ({ data }: HomeProps) => {
             tempo: "",
             sortBy: "nota",
         });
+        setCurrentPage(1); // Reset to first page when clearing filters
     };
 
     const activeFiltersCount = Object.values(filters).filter((value) => value && value !== "nota").length;
@@ -247,7 +263,8 @@ const Home = ({ data }: HomeProps) => {
 
                     <div className="mt-4 pt-4 border-t border-neutral-800">
                         <div className="text-sm text-neutral-400">
-                            Mostrando {filteredAndSortedContent.length} de {data.length} títulos
+                            Mostrando {startIndex + 1}-{Math.min(endIndex, totalItems)} de {totalItems} títulos
+                            {totalItems !== data.length && ` (filtrado de ${data.length})`}
                         </div>
                     </div>
                 </div>
@@ -260,10 +277,116 @@ const Home = ({ data }: HomeProps) => {
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-                {filteredAndSortedContent.map((item, index) => (
-                    <ContentCard key={`${item.nome}-${index}`} {...item} />
+                {currentPageData.map((item, index) => (
+                    <ContentCard key={`${item.nome}-${startIndex + index}`} {...item} />
                 ))}
             </div>
+
+            {/* Pagination Controls */}
+            {totalPages > 1 && (
+                <div className="flex justify-center items-center mt-8 mb-6 space-x-2">
+                    {/* Previous Button */}
+                    <button
+                        onClick={() => setCurrentPage(currentPage - 1)}
+                        disabled={currentPage === 1}
+                        className="flex items-center justify-center w-10 h-10 rounded-lg border border-neutral-800 text-neutral-400 hover:bg-neutral-800 hover:text-white transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-neutral-400"
+                    >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        </svg>
+                    </button>
+
+                    {/* Page Numbers */}
+                    {(() => {
+                        const pageNumbers = [];
+                        const maxVisiblePages = 7;
+                        let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+                        const endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+
+                        // Adjust start page if we're near the end
+                        if (endPage - startPage < maxVisiblePages - 1) {
+                            startPage = Math.max(1, endPage - maxVisiblePages + 1);
+                        }
+
+                        // Show first page and ellipsis if needed
+                        if (startPage > 1) {
+                            pageNumbers.push(
+                                <button
+                                    key={1}
+                                    onClick={() => setCurrentPage(1)}
+                                    className="flex items-center justify-center w-10 h-10 rounded-lg border border-neutral-800 text-neutral-400 hover:bg-neutral-800 hover:text-white transition-all duration-200"
+                                >
+                                    1
+                                </button>
+                            );
+                            if (startPage > 2) {
+                                pageNumbers.push(
+                                    <span key="ellipsis1" className="text-neutral-600 px-2">
+                                        ...
+                                    </span>
+                                );
+                            }
+                        }
+
+                        // Show visible page numbers
+                        for (let i = startPage; i <= endPage; i++) {
+                            pageNumbers.push(
+                                <button
+                                    key={i}
+                                    onClick={() => setCurrentPage(i)}
+                                    className={`flex items-center justify-center w-10 h-10 rounded-lg border transition-all duration-200 ${
+                                        i === currentPage
+                                            ? "border-blue-500 bg-blue-500 text-white"
+                                            : "border-neutral-800 text-neutral-400 hover:bg-neutral-800 hover:text-white"
+                                    }`}
+                                >
+                                    {i}
+                                </button>
+                            );
+                        }
+
+                        // Show ellipsis and last page if needed
+                        if (endPage < totalPages) {
+                            if (endPage < totalPages - 1) {
+                                pageNumbers.push(
+                                    <span key="ellipsis2" className="text-neutral-600 px-2">
+                                        ...
+                                    </span>
+                                );
+                            }
+                            pageNumbers.push(
+                                <button
+                                    key={totalPages}
+                                    onClick={() => setCurrentPage(totalPages)}
+                                    className="flex items-center justify-center w-10 h-10 rounded-lg border border-neutral-800 text-neutral-400 hover:bg-neutral-800 hover:text-white transition-all duration-200"
+                                >
+                                    {totalPages}
+                                </button>
+                            );
+                        }
+
+                        return pageNumbers;
+                    })()}
+
+                    {/* Next Button */}
+                    <button
+                        onClick={() => setCurrentPage(currentPage + 1)}
+                        disabled={currentPage === totalPages}
+                        className="flex items-center justify-center w-10 h-10 rounded-lg border border-neutral-800 text-neutral-400 hover:bg-neutral-800 hover:text-white transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-neutral-400"
+                    >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
+            )}
+
+            {/* Page Info */}
+            {totalPages > 1 && (
+                <div className="text-center text-sm text-neutral-500 mb-4">
+                    Página {currentPage} de {totalPages}
+                </div>
+            )}
         </>
     );
 };
