@@ -26,7 +26,7 @@ interface FilterState {
 const Home = ({ data }: HomeProps) => {
     const [isFilterOpen, setIsFilterOpen] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage] = useState(24); // 24 items per page for nice grid layout
+    const [itemsPerPage] = useState(24);
     const [filters, setFilters] = useState<FilterState>({
         genero: "",
         nota: "",
@@ -36,11 +36,9 @@ const Home = ({ data }: HomeProps) => {
     });
 
     const parseDate = (yearString: string): Date => {
-        // Se for apenas um ano, cria uma data com o ano fornecido
         return new Date(parseInt(yearString), 0, 1);
     };
 
-    // Get unique values for filter options
     const uniqueGenres = useMemo(() => {
         const genres = new Set<string>();
         data.forEach((d) => {
@@ -299,7 +297,7 @@ const Home = ({ data }: HomeProps) => {
                     {/* Page Numbers */}
                     {(() => {
                         const pageNumbers = [];
-                        const maxVisiblePages = 7;
+                        const maxVisiblePages = 3;
                         let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
                         const endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
 
@@ -336,7 +334,7 @@ const Home = ({ data }: HomeProps) => {
                                     onClick={() => setCurrentPage(i)}
                                     className={`flex items-center justify-center w-10 h-10 rounded-lg border transition-all duration-200 ${
                                         i === currentPage
-                                            ? "border-blue-500 bg-blue-500 text-white"
+                                            ? "border-neutral-400 bg-neutral-800 text-white"
                                             : "border-neutral-800 text-neutral-400 hover:bg-neutral-800 hover:text-white"
                                     }`}
                                 >
