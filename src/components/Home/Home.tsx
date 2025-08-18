@@ -1,5 +1,8 @@
 import { useState, useMemo, useEffect } from "react";
 import ContentCard from "../ContentCard/ContentCard";
+import { AiOutlineSearch } from "react-icons/ai";
+import { IoMdClose } from "react-icons/io";
+import { GrFormPrevious, GrFormNext } from "react-icons/gr";
 
 interface Data {
     nota: number;
@@ -21,18 +24,20 @@ interface FilterState {
     tipo: string;
     tempo: string;
     sortBy: string;
+    search: string;
 }
 
 const Home = ({ data }: HomeProps) => {
     const [isFilterOpen, setIsFilterOpen] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage] = useState(24);
+    const [itemsPerPage] = useState(36);
     const [filters, setFilters] = useState<FilterState>({
         genero: "",
         nota: "",
         tipo: "",
         tempo: "",
         sortBy: "nota",
+        search: "",
     });
 
     const parseDate = (yearString: string): Date => {
@@ -69,8 +74,9 @@ const Home = ({ data }: HomeProps) => {
             const matchesRating = !filters.nota || d.nota.toString() === filters.nota;
             const matchesType = !filters.tipo || d.tipo === filters.tipo;
             const matchesTempo = !filters.tempo || d.tempo === filters.tempo;
+            const matchesSearch = !filters.search || d.nome.toLowerCase().includes(filters.search.toLowerCase());
 
-            return matchesGenre && matchesRating && matchesType && matchesTempo;
+            return matchesGenre && matchesRating && matchesType && matchesTempo && matchesSearch;
         });
 
         // Sort content
@@ -117,6 +123,7 @@ const Home = ({ data }: HomeProps) => {
             tipo: "",
             tempo: "",
             sortBy: "nota",
+            search: "",
         });
         setCurrentPage(1); // Reset to first page when clearing filters
     };
@@ -274,6 +281,28 @@ const Home = ({ data }: HomeProps) => {
                 </a>
             </div>
 
+            {/* Search Bar */}
+            <div className="max-w-md mx-auto mb-6">
+                <div className="relative">
+                    <input
+                        type="text"
+                        placeholder="Pesquisar mídia..."
+                        value={filters.search}
+                        onChange={(e) => handleFilterChange("search", e.target.value)}
+                        className="w-full rounded-lg border border-neutral-800/70 bg-neutral-950 px-4 py-3 pl-12 text-white placeholder-neutral-400 focus:border-neutral-700 focus:outline-none transition-colors shadow-inner shadow-neutral-800/70"
+                    />
+                    <AiOutlineSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-neutral-400" />
+                    {filters.search && (
+                        <button
+                            onClick={() => handleFilterChange("search", "")}
+                            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-400 hover:text-white transition-colors"
+                        >
+                            <IoMdClose />
+                        </button>
+                    )}
+                </div>
+            </div>
+
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
                 {currentPageData.map((item, index) => (
                     <ContentCard key={`${item.nome}-${startIndex + index}`} {...item} />
@@ -287,11 +316,9 @@ const Home = ({ data }: HomeProps) => {
                     <button
                         onClick={() => setCurrentPage(currentPage - 1)}
                         disabled={currentPage === 1}
-                        className="flex items-center justify-center w-10 h-10 rounded-lg border border-neutral-800 text-neutral-400 hover:bg-neutral-800 hover:text-white transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-neutral-400"
+                        className="flex items-center justify-center w-10 h-10 rounded-lg border border-neutral-800 text-neutral-400 hover:bg-neutral-800 hover:text-white transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-neutral-400 cursor-pointer select-none"
                     >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                        </svg>
+                        <GrFormPrevious />
                     </button>
 
                     {/* Page Numbers */}
@@ -312,14 +339,14 @@ const Home = ({ data }: HomeProps) => {
                                 <button
                                     key={1}
                                     onClick={() => setCurrentPage(1)}
-                                    className="flex items-center justify-center w-10 h-10 rounded-lg border border-neutral-800 text-neutral-400 hover:bg-neutral-800 hover:text-white transition-all duration-200"
+                                    className="flex items-center justify-center w-10 h-10 rounded-lg border border-neutral-800 text-neutral-400 hover:bg-neutral-800 hover:text-white transition-all duration-200 cursor-pointer select-none"
                                 >
                                     1
                                 </button>
                             );
                             if (startPage > 2) {
                                 pageNumbers.push(
-                                    <span key="ellipsis1" className="text-neutral-600 px-2">
+                                    <span key="ellipsis1" className="text-neutral-600 px-2 select-none">
                                         ...
                                     </span>
                                 );
@@ -332,7 +359,7 @@ const Home = ({ data }: HomeProps) => {
                                 <button
                                     key={i}
                                     onClick={() => setCurrentPage(i)}
-                                    className={`flex items-center justify-center w-10 h-10 rounded-lg border transition-all duration-200 ${
+                                    className={`flex items-center justify-center w-10 h-10 rounded-lg border transition-all duration-200 cursor-pointer select-none ${
                                         i === currentPage
                                             ? "border-neutral-400 bg-neutral-800 text-white"
                                             : "border-neutral-800 text-neutral-400 hover:bg-neutral-800 hover:text-white"
@@ -347,7 +374,7 @@ const Home = ({ data }: HomeProps) => {
                         if (endPage < totalPages) {
                             if (endPage < totalPages - 1) {
                                 pageNumbers.push(
-                                    <span key="ellipsis2" className="text-neutral-600 px-2">
+                                    <span key="ellipsis2" className="text-neutral-600 px-2 select-none">
                                         ...
                                     </span>
                                 );
@@ -356,7 +383,7 @@ const Home = ({ data }: HomeProps) => {
                                 <button
                                     key={totalPages}
                                     onClick={() => setCurrentPage(totalPages)}
-                                    className="flex items-center justify-center w-10 h-10 rounded-lg border border-neutral-800 text-neutral-400 hover:bg-neutral-800 hover:text-white transition-all duration-200"
+                                    className="flex items-center justify-center w-10 h-10 rounded-lg border border-neutral-800 text-neutral-400 hover:bg-neutral-800 hover:text-white transition-all duration-200 cursor-pointer select-none"
                                 >
                                     {totalPages}
                                 </button>
@@ -370,11 +397,9 @@ const Home = ({ data }: HomeProps) => {
                     <button
                         onClick={() => setCurrentPage(currentPage + 1)}
                         disabled={currentPage === totalPages}
-                        className="flex items-center justify-center w-10 h-10 rounded-lg border border-neutral-800 text-neutral-400 hover:bg-neutral-800 hover:text-white transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-neutral-400"
+                        className="flex items-center justify-center w-10 h-10 rounded-lg border border-neutral-800 text-neutral-400 hover:bg-neutral-800 hover:text-white transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-neutral-400 cursor-pointer select-none"
                     >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
+                        <GrFormNext />
                     </button>
                 </div>
             )}
