@@ -136,7 +136,7 @@ const Home = ({ data }: HomeProps) => {
             <div className="fixed top-4 right-4 z-50 ">
                 <button
                     onClick={() => setIsFilterOpen(!isFilterOpen)}
-                    className="group relative flex h-12 w-12 items-center justify-center rounded-lg border border-neutral-800 transition-all duration-300 hover:bg-neutral-800"
+                    className="group relative flex h-12 w-12 items-center justify-center rounded-lg border border-neutral-800 transition-all duration-300 bg-neutral-950 hover:bg-neutral-900 cursor-pointer"
                 >
                     <div className="relative h-5 w-5">
                         <div
@@ -275,8 +275,13 @@ const Home = ({ data }: HomeProps) => {
                 </div>
             </div>
 
-            <div className="text-neutral-200 text-xl text-center mb-6 hover:text-neutral-400 transition-colors">
-                <a href="https://coelhomarcus.com" target="_blank" rel="noopener noreferrer">
+            <div className="text-neutral-200 text-xl text-center mb-6">
+                <a
+                    href="https://coelhomarcus.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-neutral-400 transition-colors"
+                >
                     {filters.tipo ? `${filters.tipo}s` : "Marcus"}
                 </a>
             </div>
@@ -303,14 +308,47 @@ const Home = ({ data }: HomeProps) => {
                 </div>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-                {currentPageData.map((item, index) => (
-                    <ContentCard key={`${item.nome}-${startIndex + index}`} {...item} />
-                ))}
-            </div>
+            {/* Content Grid or Empty State */}
+            {filteredAndSortedContent.length > 0 ? (
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+                    {currentPageData.map((item, index) => (
+                        <ContentCard key={`${item.nome}-${startIndex + index}`} {...item} />
+                    ))}
+                </div>
+            ) : (
+                /* Empty State */
+                <div className="flex flex-col items-center justify-center py-16 px-4">
+                    <div className="text-center max-w-md">
+                        {/* Icon */}
+                        <div className="w-20 h-20 mx-auto mb-6 rounded-full flex items-center justify-center">
+                            <AiOutlineSearch className="w-10 h-10 text-neutral-500" />
+                        </div>
+
+                        {/* Title */}
+                        <h2 className="text-xl font-semibold text-neutral-300 mb-3">Nenhum resultado</h2>
+
+                        {/* Description */}
+                        <p className="text-neutral-500 mb-6 leading-relaxed">
+                            {filters.search
+                                ? `Não encontramos nenhuma mídia com o termo "${filters.search}".`
+                                : "Não encontramos nenhuma mídia que corresponda aos filtros aplicados."}
+                        </p>
+
+                        {/* Clear Filters Button */}
+                        {(filters.search || activeFiltersCount > 0) && (
+                            <button
+                                onClick={clearFilters}
+                                className="mt-6 px-6 py-3 bg-neutral-950 hover:bg-neutral-900 border border-neutral-800 cursor-pointer text-white rounded-lg transition-colors duration-200 font-medium shadow-inner shadow-neutral-800/70"
+                            >
+                                Limpar filtros e pesquisa
+                            </button>
+                        )}
+                    </div>
+                </div>
+            )}
 
             {/* Pagination Controls */}
-            {totalPages > 1 && (
+            {totalPages > 1 && filteredAndSortedContent.length > 0 && (
                 <div className="flex justify-center items-center mt-8 mb-6 space-x-2">
                     {/* Previous Button */}
                     <button
@@ -405,7 +443,7 @@ const Home = ({ data }: HomeProps) => {
             )}
 
             {/* Page Info */}
-            {totalPages > 1 && (
+            {totalPages > 1 && filteredAndSortedContent.length > 0 && (
                 <div className="text-center text-sm text-neutral-500 mb-4">
                     Página {currentPage} de {totalPages}
                 </div>
