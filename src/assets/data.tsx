@@ -163,7 +163,7 @@ export const data = [
     },
     {
         nota: 9,
-        nome: "Invasao Zumbi",
+        nome: "Invasão Zumbi",
         lancamento: "2016",
         genero: ["Apocalipse", "Ação", "K-Drama"],
         tempo: "Completo",
@@ -475,6 +475,15 @@ export const data = [
         tempo: "Incompleto",
         tipo: "Mangá",
         cover: "https://cdn.myanimelist.net/images/manga/5/213340.jpg",
+    },
+    {
+        nota: 9,
+        nome: "Garota de Fora",
+        lancamento: "2018",
+        genero: ["Suspense", "Crime"],
+        tempo: "Completo",
+        tipo: "Série",
+        cover: "https://media.themoviedb.org/t/p/w300_and_h450_bestv2/nhuhxiVTm1EvhLkjAy2ywdDE1PA.jpg",
     },
     {
         nota: 8,
@@ -1594,7 +1603,7 @@ export const data = [
     },
     {
         nota: 7,
-        nome: "Finding Nemo",
+        nome: "Procurando Nemo",
         lancamento: "2003",
         genero: ["Família"],
         tempo: "Completo",
@@ -1603,7 +1612,7 @@ export const data = [
     },
     {
         nota: 7,
-        nome: "Finding Dory",
+        nome: "Procurando Dory",
         lancamento: "2016",
         genero: ["Família"],
         tempo: "Completo",
@@ -1621,7 +1630,7 @@ export const data = [
     },
     {
         nota: 7,
-        nome: "Avengers: Endgame",
+        nome: "Vingadores: Ultimato",
         lancamento: "2019",
         genero: ["Ação", "Família"],
         tempo: "Completo",
@@ -1630,7 +1639,7 @@ export const data = [
     },
     {
         nota: 7,
-        nome: "Avengers: Infinity War",
+        nome: "Vingadores: Guerra Infinita",
         lancamento: "2018",
         genero: ["Ação", "Família"],
         tempo: "Completo",
@@ -1639,7 +1648,7 @@ export const data = [
     },
     {
         nota: 7,
-        nome: "Avengers: Age of Ultron",
+        nome: "Vingadores: Era de Ultron",
         lancamento: "2015",
         genero: ["Ação", "Família"],
         tempo: "Completo",
@@ -1648,7 +1657,7 @@ export const data = [
     },
     {
         nota: 7,
-        nome: "The Avengers",
+        nome: "Os Vingadores",
         lancamento: "2012",
         genero: ["Ação", "Família"],
         tempo: "Completo",
@@ -1666,7 +1675,7 @@ export const data = [
     },
     {
         nota: 7,
-        nome: "The Amazing Spider-Man",
+        nome: "O Espetacular Homem-Aranha",
         lancamento: "2012",
         genero: ["Ação", "Família"],
         tempo: "Completo",
@@ -1675,7 +1684,7 @@ export const data = [
     },
     {
         nota: 7,
-        nome: "Spider-Man: No Way Home",
+        nome: "Homem-Aranha: Sem Volta Para Casa",
         lancamento: "2021",
         genero: ["Ação", "Família"],
         tempo: "Completo",
@@ -1684,7 +1693,7 @@ export const data = [
     },
     {
         nota: 7,
-        nome: "Spider-Man: Far From Home",
+        nome: "Homem-Aranha: Longe de Casa",
         lancamento: "2019",
         genero: ["Ação", "Família"],
         tempo: "Completo",
@@ -1693,7 +1702,7 @@ export const data = [
     },
     {
         nota: 7,
-        nome: "Spider-Man: Homecoming",
+        nome: "Homem-Aranha: De Volta ao Lar",
         lancamento: "2017",
         genero: ["Ação", "Família"],
         tempo: "Completo",
@@ -1702,7 +1711,7 @@ export const data = [
     },
     {
         nota: 7,
-        nome: "Spider-Man: Across the Spider-Verse",
+        nome: "Homem-Aranha: Através do Aranhaverso",
         lancamento: "2023",
         genero: ["Ação", "Família"],
         tempo: "Completo",
@@ -1711,7 +1720,7 @@ export const data = [
     },
     {
         nota: 7,
-        nome: "Spider-Man: Into the Spider-Verse",
+        nome: "Homem-Aranha: No Aranhaverso",
         lancamento: "2018",
         genero: ["Ação", "Família"],
         tempo: "Completo",
@@ -1747,7 +1756,7 @@ export const data = [
     },
     {
         nota: 7,
-        nome: "Charlie and the Chocolate Factory",
+        nome: "A Fantástica Fábrica de Chocolate",
         lancamento: "2005",
         genero: ["Família"],
         tempo: "Completo",
@@ -1774,7 +1783,7 @@ export const data = [
     },
     {
         nota: 7,
-        nome: "Inside Out",
+        nome: "Divertida Mente",
         lancamento: "2015",
         genero: ["Família"],
         tempo: "Completo",
@@ -1783,7 +1792,7 @@ export const data = [
     },
     {
         nota: 7,
-        nome: "Inside Out 2",
+        nome: "Divertida Mente 2",
         lancamento: "2024",
         genero: ["Família"],
         tempo: "Completo",
@@ -1792,7 +1801,7 @@ export const data = [
     },
     {
         nota: 7,
-        nome: "Monsters, Inc.",
+        nome: "Monstros S.A.",
         lancamento: "2001",
         genero: ["Família"],
         tempo: "Completo",
@@ -1945,7 +1954,7 @@ export const data = [
     },
     {
         nota: 7,
-        nome: "Alvin and the Chipmunks",
+        nome: "Alvin e os Esquilos",
         lancamento: "2007",
         genero: ["Família"],
         tempo: "Completo",
@@ -2017,7 +2026,7 @@ export const data = [
     },
     {
         nota: 6,
-        nome: "A Quiet Place: Day One",
+        nome: "Um lugar silencioso: dia um",
         lancamento: "2023",
         genero: ["Horror", "Apocalipse"],
         tempo: "Completo",
