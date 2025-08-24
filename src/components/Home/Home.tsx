@@ -183,6 +183,23 @@ const Home = ({ data }: HomeProps) => {
                     </div>
 
                     <div className="space-y-4">
+                        {/* Type Filter */}
+                        <div>
+                            <label className="block text-sm font-medium text-neutral-300 mb-2">Tipo</label>
+                            <select
+                                value={filters.tipo}
+                                onChange={(e) => handleFilterChange("tipo", e.target.value)}
+                                className="w-full rounded-lg border border-neutral-800 bg-neutral-900 px-3 py-2 text-white focus:border-blue-500 focus:outline-none transition-colors"
+                            >
+                                <option value="">Todos os tipos</option>
+                                {uniqueTypes.map((type) => (
+                                    <option key={type} value={type}>
+                                        {type}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
                         {/* Genre Filter */}
                         <div>
                             <label className="block text-sm font-medium text-neutral-300 mb-2">Gênero</label>
@@ -212,23 +229,6 @@ const Home = ({ data }: HomeProps) => {
                                 {uniqueRatings.map((rating) => (
                                     <option key={rating} value={rating.toString()}>
                                         {rating}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-
-                        {/* Type Filter */}
-                        <div>
-                            <label className="block text-sm font-medium text-neutral-300 mb-2">Tipo</label>
-                            <select
-                                value={filters.tipo}
-                                onChange={(e) => handleFilterChange("tipo", e.target.value)}
-                                className="w-full rounded-lg border border-neutral-800 bg-neutral-900 px-3 py-2 text-white focus:border-blue-500 focus:outline-none transition-colors"
-                            >
-                                <option value="">Todos os tipos</option>
-                                {uniqueTypes.map((type) => (
-                                    <option key={type} value={type}>
-                                        {type}
                                     </option>
                                 ))}
                             </select>
