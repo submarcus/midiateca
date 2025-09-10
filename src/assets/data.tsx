@@ -1216,6 +1216,15 @@ export const data = [
     },
     {
         nota: 8,
+        nome: "Sword Art Online",
+        lancamento: "2012",
+        genero: ["Ficção Científica", "Romance"],
+        tempo: "Completo",
+        tipo: "Anime",
+        cover: "https://cdn.myanimelist.net/images/anime/11/39717.jpg",
+    },
+    {
+        nota: 8,
         nome: "Wall·E",
         lancamento: "2008",
         genero: ["Romance", "Ficção Científica"],
@@ -1240,6 +1249,15 @@ export const data = [
         tempo: "Completo",
         tipo: "Anime",
         cover: "https://cdn.myanimelist.net/images/anime/1301/93586.jpg",
+    },
+    {
+        nota: 8,
+        nome: "Kiss x Sis",
+        lancamento: "2008",
+        genero: ["Romance", "Ecchi"],
+        tempo: "Completo",
+        tipo: "Anime",
+        cover: "https://cdn.myanimelist.net/images/anime/1966/121554.jpg",
     },
     {
         nota: 8,
