@@ -1360,6 +1360,15 @@ export const data = [
     },
     {
         nota: 7,
+        nome: "Uma Família Exemplar",
+        lancamento: "2022",
+        genero: ["Thriller", "Crime", "Ação", "K-Drama"],
+        tempo: "Completo",
+        tipo: "Série",
+        cover: "https://media.themoviedb.org/t/p/w600_and_h900_bestv2/gBS6hg7nbsFxB7GpEAwYjkOuZqG.jpg",
+    },
+    {
+        nota: 7,
         nome: "American Psycho",
         lancamento: "2000",
         genero: ["Thriller", "Crime", "Ação"],
